@@ -4,9 +4,12 @@ import 'codemirror/theme/monokai.css';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
+import CodeMirror from 'codemirror';
+import emmet from '@emmetio/codemirror-plugin';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons';
+emmet(CodeMirror);
 
 export default function Editor(props) {
     const { language, displayName, value, onChange } = props;
@@ -37,7 +40,11 @@ export default function Editor(props) {
                     lint: true,
                     mode: language,
                     theme: "monokai",
-                    lineNumbers: true
+                    lineNumbers: true,
+                    extraKeys: {
+                        Tab: 'emmetExpandAbbreviation',
+                        Enter: 'emmetInsertLineBreak'
+                    }
                 }}
             />
         </div>
