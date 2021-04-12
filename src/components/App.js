@@ -9,6 +9,10 @@ function App() {
 	const [srcDoc, setSrcDoc] = useState('');
 
 	useEffect(() => {
+		document.title = "CodePen App";
+	 }, []);
+
+	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setSrcDoc(`
 				<html>
@@ -23,7 +27,7 @@ function App() {
 	}, [html, css, javascript]);
 
 	return (
-		<>
+		<>	
 			<div className="pane top-pane">
 				<Editor 
 					language="xml" 

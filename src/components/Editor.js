@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons';
 emmet(CodeMirror);
 
+
 export default function Editor(props) {
     const { language, displayName, value, onChange } = props;
     const [open, setOpen] = useState(true);
@@ -41,9 +42,14 @@ export default function Editor(props) {
                     mode: language,
                     theme: "monokai",
                     lineNumbers: true,
+                    indentUnit: 4,
                     extraKeys: {
                         Tab: 'emmetExpandAbbreviation',
+                        Esc: 'emmetResetAbbreviation',
                         Enter: 'emmetInsertLineBreak'
+                    },
+                    emmet: {
+                        preview: false
                     }
                 }}
             />
