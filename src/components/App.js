@@ -8,6 +8,12 @@ function App() {
 	const [javascript, setJavascript] = useLocalStorage('javascript', '');
 	const [srcDoc, setSrcDoc] = useState('');
 
+	const clearEditors = () => {
+		setHtml('');
+		setCss('');
+		setJavascript('');
+	}
+
 	useEffect(() => {
 		document.title = "CodePen App";
 	 }, []);
@@ -28,6 +34,9 @@ function App() {
 
 	return (
 		<>	
+			<div className="menu">
+				<button onClick={clearEditors}>Clear</button>
+			</div>
 			<div className="pane top-pane">
 				<Editor 
 					language="xml" 
@@ -45,7 +54,7 @@ function App() {
 					value={javascript} 
 					onChange={setJavascript}/>
 			</div>
-			<div className="pane">
+			<div className={`pane ${html || css || javascript ? '' : 'bottom-pane'}`}>
 				<iframe
 					srcDoc={srcDoc}
 					title="output"

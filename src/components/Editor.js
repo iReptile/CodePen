@@ -29,7 +29,7 @@ export default function Editor(props) {
                         className="expand-collapse-btn"
                         onClick={() => setOpen(prevOpen => !prevOpen)}
                     >
-                        <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
+                    <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
                     </button>
                 </div>
             <ControlledEditor 
